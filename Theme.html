@@ -1,0 +1,787 @@
+<html>
+<head>
+	<title>LimeChat Theme Preview Tester</title>
+	<link rel="stylesheet" href="Theme.css" />
+	<link rel="stylesheet" href="Theme.yaml.css" />
+	<style>
+	/**
+	 * These styles are just needed for basic UI layouting and aren't needed anywhere else.
+	 * .body class is a workaround because limechat has multiple <body> tags.
+	*/
+	*{box-sizing:border-box;padding:0;margin:0}
+	.body:not(.normal){padding:0}
+	.body.normal{background-color:inherit;position:relative}
+	.wrapper {width:100%;display:flex;height:100vh}
+	/* Main */
+	/* You can resize the channel and console height here */
+	main [type=channel]{max-height:70vh}
+	main [type=console]{max-height:30vh}
+	main{flex-grow:1;display:flex;flex-direction:column}
+	main .body{overflow-y:scroll;}
+	/* Input */
+	.input{display:block;width:100%;padding:15px}
+	/* lists for server tree and member-list */
+	ul{list-style:none;padding:0;margin:0}
+	ul ul{padding-left:15px}
+	li{padding-left:15px;margin-top:4px}
+	.closed ul{display:none}
+	/* server-tree */
+	.server-tree{width:10%}
+	.server-tree>ul>li:before{content:"› ";display:inline-block}
+	.server-tree>ul>li.open:before{transform:rotate(90deg)}
+	/* member-list */
+	.member-list{padding:4px;width:10%;position:relative;z-index: 1}
+	.member-list li:before {display:inline-block;content:"+";margin-left:-15px;opacity:0;margin-right:4px}
+	.member-list .voice:before{opacity:1}
+	.member-list .operator:before{content:"@";opacity:1}
+	</style>
+</head>
+<body class="body">
+	<div class="wrapper">
+		<aside class="server-tree">
+			<ul>
+				<li class="active open">
+					freenode
+					<ul>
+						<li class="normal">#helpdesk</li>
+						<li class="normal selected active">#superchan</li>
+						<li>#limechat</li>
+						<li class="normal newtalk">#nerds</li>
+						<li class="normal highlight">#onfire</li>
+					</ul>
+				</li>
+				<li class="inactive closed">
+					efnet
+					<ul>
+						<li>#network</li>
+						<li>#is</li>
+						<li>#inactive</li>
+					</ul>
+				</li>
+				<li class="active open">
+					Libera.Chat
+					<ul>
+						<li class="normal">#znc</li>
+					</ul>
+				</li>
+				<li class="inactive open">
+					UnderNET
+					<ul>
+						<li>#network</li>
+						<li>#is</li>
+						<li>#inactive</li>
+					</ul>
+				</li>
+			</ul>
+		</aside>
+		<main class="main">
+			<div class="body normal" id="channel" type="channel" channelname='#limechat'>
+				<div class="line">
+					<span class="time">[30.07.23, 17:41:57]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">English, motherf**ker, do you speak it?</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:03]</span>
+					<span class="sender" type="normal" colornumber="1">&lt;CyberNinja&gt;</span>
+					<span class="message" type="privmsg">Say "what" again! I dare you!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:11]</span>
+					<span class="sender" type="normal" colornumber="1">&lt;CyberNinja&gt;</span>
+					<span class="message" type="privmsg">I'm gonna get medieval on your a**.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:19]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">Enough is enough! I've had it with these motherf**king snakes on this motherf**king plane!</span>
+				</div>
+
+				<div class="line" type="topic">
+					<span class="time">[30.07.23, 17:42:19]</span>
+					<span class="sender" type="myself">pr0pz</span>
+					<span class="message" type="topic">has set topic: Lorem ipsum dolor sit amet (topic)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:27]</span>
+					<span class="sender" type="normal" colornumber="2">&lt;PixelPirate&gt;</span>
+					<span class="message" type="privmsg">I don't remember asking you a damn thing.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:33]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">You can't handle the truth!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:41]</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">I'm the king of the world!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:49]</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">Here's looking at you, kid.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:57]</span>
+					<span class="sender" type="normal" colornumber="5">&lt;NeonGhost&gt;</span>
+					<span class="message" type="privmsg">Go ahead, make my day.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:05]</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">You're gonna need a bigger boat.</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:05]</span>
+					<span class="message" type="kick">pr0pz has kicked CodeWizard (Cya!) (kick)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:13]</span>
+					<span class="sender" type="normal" colornumber="7">&lt;DiscoUnicorn&gt;</span>
+					<span class="message" type="privmsg">I'm going to make him an offer he can't refuse.</span>
+				</div>
+
+				<div class="line" highlight="true">
+					<span class="time">[30.07.23, 17:43:13]</span>
+					<span class="sender" type="normal" colornumber="7">&lt;DiscoUnicorn&gt;</span>
+					<span class="message" type="privmsg">Yo, this is a highlight line <span class="highlight">pr0pz</span>, so you know how it looks like (highlight)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:21]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">Here's Johnny!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:29]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">I'll be back.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:37]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">Show me the money!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:45]</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">Wax on, wax off.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:53]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">I feel the need... the need for speed: <a href="https://duckduckgo.com/">https://duckduckgo.com/</a> (link)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:01]</span>
+					<span class="sender" type="normal" colornumber="7">&lt;DiscoUnicorn&gt;</span>
+					<span class="message" type="privmsg">I am Iron Man.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:09]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">I see dead people.</span>
+				</div>
+
+				<div class="line" type="action">
+					<span class="time">[30.07.23, 17:44:09]</span>
+					<span class="sender" type="myself">pr0pz</span>
+					<span class="message">slaps PixelPirate around a bit with a large trout (action)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:17]</span>
+					<span class="sender" type="normal" colornumber="2">&lt;PixelPirate&gt;</span>
+					<span class="message" type="privmsg">May the Force be with you.</span>
+				</div>
+
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:41:57]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">English, motherf**ker, do you speak it?</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:03]</span>
+					<span class="sender" type="normal" colornumber="1">&lt;CyberNinja&gt;</span>
+					<span class="message" type="privmsg">Say "what" again! I dare you!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:11]</span>
+					<span class="sender" type="normal" colornumber="1">&lt;CyberNinja&gt;</span>
+					<span class="message" type="privmsg">I'm gonna get medieval on your a**.</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:11]</span>
+					<span class="message" type="nick">CyberNinja is now known as CyberNinja_ (nick)</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:11]</span>
+					<span class="message" type="nick">CyberNinja_ is now known as CyberNinja (nick)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:19]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">Enough is enough! I've had it with these motherf**king snakes on this motherf**king plane!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:27]</span>
+					<span class="sender" type="normal" colornumber="2">&lt;PixelPirate&gt;</span>
+					<span class="message" type="privmsg">I don't remember asking you a damn thing.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:33]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">You can't handle the truth!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:41]</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">I'm the king of the world!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:49]</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">Here's looking at you, kid.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:57]</span>
+					<span class="sender" type="normal" colornumber="5">&lt;NeonGhost&gt;</span>
+					<span class="message" type="privmsg">Go ahead, make my day.</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:57]</span>
+					<span class="message" type="part">pr0pz has left IRC (Read error: Operation timed out) (part)</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:57]</span>
+					<span class="message" type="join">pr0pz has joined (~pr0pz@host-123-45-678-90.net.bla) (join)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:05]</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">You're gonna need a bigger boat.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:13]</span>
+					<span class="sender" type="normal" colornumber="7">&lt;DiscoUnicorn&gt;</span>
+					<span class="message" type="privmsg">I'm going to make him an offer he can't refuse.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:21]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">Here's Johnny!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:29]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">I'll be back.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:37]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">Show me the money!</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:11]</span>
+					<span class="message" type="mode">pr0pz has changed mode: +o TechWhiz (mode)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:45]</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">Wax on, wax off.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:53]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">I feel the need... the need for speed!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:01]</span>
+					<span class="sender" type="normal" colornumber="7">&lt;DiscoUnicorn&gt;</span>
+					<span class="message" type="privmsg">I am Iron Man.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:09]</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">I see dead people.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:17]</span>
+					<span class="sender" type="normal" colornumber="2">&lt;PixelPirate&gt;</span>
+					<span class="message" type="privmsg">May the Force be with you.</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:17]</span>
+					<span class="message" type="error">Error(421): SLAP Unkown command (error)</span>
+				</div>
+			</div>
+
+			<div class="input-wrapper">
+				<form id="form">
+					<input type="text" class="input" name="text" id="text" />
+					<input type="submit" hidden />
+				</form>
+			</div>
+
+			<div id="console" class="body normal" type="console">
+				<div class="line">
+					<span class="time">[30.07.23, 17:41:57]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">English, motherf**ker, do you speak it?</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:03]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="1">&lt;CyberNinja&gt;</span>
+					<span class="message" type="privmsg">Say "what" again! I dare you!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:11]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="1">&lt;CyberNinja&gt;</span>
+					<span class="message" type="privmsg">I'm gonna get medieval on your a**.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:19]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">Enough is enough! I've had it with these motherf**king snakes on this motherf**king plane!</span>
+				</div>
+
+				<div class="line" type="topic">
+					<span class="time">[30.07.23, 17:42:19]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">pr0pz</span>
+					<span class="message" type="topic">has set topic: Lorem ipsum dolor sit amet (topic)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:27]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="2">&lt;PixelPirate&gt;</span>
+					<span class="message" type="privmsg">I don't remember asking you a damn thing.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:33]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">You can't handle the truth!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:41]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">I'm the king of the world!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:49]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">Here's looking at you, kid.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:57]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="5">&lt;NeonGhost&gt;</span>
+					<span class="message" type="privmsg">Go ahead, make my day.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:05]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">You're gonna need a bigger boat.</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:05]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="message" type="kick">pr0pz has kicked CodeWizard (Cya!) (kick)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:13]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="7">&lt;DiscoUnicorn&gt;</span>
+					<span class="message" type="privmsg">I'm going to make him an offer he can't refuse.</span>
+				</div>
+
+				<div class="line" highlight="true">
+					<span class="time">[30.07.23, 17:43:13]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="7">&lt;DiscoUnicorn&gt;</span>
+					<span class="message" type="privmsg">Yo, this is a highlight line <span class="highlight">pr0pz</span>, so you know how it looks like (highlight)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:21]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">Here's Johnny!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:29]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">I'll be back.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:37]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">Show me the money!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:45]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">Wax on, wax off.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:53]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">I feel the need... the need for speed: <a href="https://duckduckgo.com/">https://duckduckgo.com/</a> (link)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:01]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="7">&lt;DiscoUnicorn&gt;</span>
+					<span class="message" type="privmsg">I am Iron Man.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:09]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">I see dead people.</span>
+				</div>
+
+				<div class="line" type="action">
+					<span class="time">[30.07.23, 17:44:09]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">pr0pz</span>
+					<span class="message">slaps PixelPirate around a bit with a large trout (action)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:17]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="2">&lt;PixelPirate&gt;</span>
+					<span class="message" type="privmsg">May the Force be with you.</span>
+				</div>
+
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:41:57]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">English, motherf**ker, do you speak it?</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:03]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="1">&lt;CyberNinja&gt;</span>
+					<span class="message" type="privmsg">Say "what" again! I dare you!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:11]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="1">&lt;CyberNinja&gt;</span>
+					<span class="message" type="privmsg">I'm gonna get medieval on your a**.</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:11]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="message" type="nick">CyberNinja is now known as CyberNinja_ (nick)</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:11]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="message" type="nick">CyberNinja_ is now known as CyberNinja (nick)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:19]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">Enough is enough! I've had it with these motherf**king snakes on this motherf**king plane!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:27]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="2">&lt;PixelPirate&gt;</span>
+					<span class="message" type="privmsg">I don't remember asking you a damn thing.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:33]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">You can't handle the truth!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:41]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">I'm the king of the world!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:49]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">Here's looking at you, kid.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:57]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="5">&lt;NeonGhost&gt;</span>
+					<span class="message" type="privmsg">Go ahead, make my day.</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:57]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="message" type="part">pr0pz has left IRC (Read error: Operation timed out) (part)</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:57]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="message" type="join">pr0pz has joined (~pr0pz@host-123-45-678-90.net.bla) (join)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:05]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">You're gonna need a bigger boat.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:13]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="7">&lt;DiscoUnicorn&gt;</span>
+					<span class="message" type="privmsg">I'm going to make him an offer he can't refuse.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:21]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">Here's Johnny!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:29]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">I'll be back.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:37]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">Show me the money!</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:42:11]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="message" type="mode">pr0pz has changed mode: +o TechWhiz (mode)</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:45]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="3">&lt;TechWhiz&gt;</span>
+					<span class="message" type="privmsg">Wax on, wax off.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:43:53]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">I feel the need... the need for speed!</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:01]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="7">&lt;DiscoUnicorn&gt;</span>
+					<span class="message" type="privmsg">I am Iron Man.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:09]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
+					<span class="message" type="privmsg">I see dead people.</span>
+				</div>
+				
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:17]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="sender" type="normal" colornumber="2">&lt;PixelPirate&gt;</span>
+					<span class="message" type="privmsg">May the Force be with you.</span>
+				</div>
+
+				<div class="line">
+					<span class="time">[30.07.23, 17:44:17]</span>
+					<span class="place">&lt;#superchan&gt;</span>
+					<span class="message" type="error">Error(421): SLAP Unkown command (error)</span>
+				</div>
+			</div>
+		</main>
+		<aside id="member-list" class="member-list">
+			<ul id="members"></ul>
+		</aside>
+	</div>
+
+	<script>
+	// 15 different colors
+	var nicks = [
+		{ nick: 'pr0pz', type: 'myself', class: 'operator', color: 0 },
+		{ nick: 'TechWhiz', class: 'operator', color: 3 },
+		{ nick: 'CosmicChampion', class: 'voice', color: 4, },
+		{ nick: 'CyberNinja', class: 'voice', color: 1 },
+		{ nick: 'DiscoUnicorn', class: 'voice', color: 7 },
+		{ nick: 'GalacticGuru', class: 'voice', color: 6, },
+		{ nick: 'NeonGhost', class: 'voice', color: 5 },
+		{ nick: 'PixelPirate', class: 'voice', color: 2 },
+		{ nick: 'JazzMaster', color: 8 },
+		{ nick: 'MoonlightDreamer', color: 9 },
+		{ nick: 'PixelProphet', color: 10 },
+		{ nick: 'StarDustQueen', color: 11 },
+		{ nick: 'StealthGeek', color: 12 },
+		{ nick: 'VoxelWarrior', color: 13 },
+	]
+
+	var dateOptions = {
+		year: '2-digit',
+		month: '2-digit',
+		day: '2-digit',
+		hour: '2-digit',
+		minute: '2-digit',
+		second: '2-digit',
+	};
+		
+	document.addEventListener( 'DOMContentLoaded', () =>
+	{
+		// Fill member list
+		nicks.forEach( nick =>
+		{
+			let li = document.createElement('li')
+			li.classList.add( nick.class !== undefined ? nick.class : 'normal' )
+			li.innerHTML = nick.nick
+			document.getElementById('members').appendChild(li)
+		})
+
+		// Handle new messages
+		document.getElementById('form').addEventListener( 'submit', (event) =>
+		{
+			event.preventDefault()
+			let text = document.getElementById('text')
+
+			if ( text.value != '' )
+			{
+				// Channel Body
+				// Get random nick
+				let nick = nicks[ Math.floor( Math.random() * nicks.length ) ]
+				// Create msg
+				let msg = document.createElement('div')
+				// Get now time
+				let now = new Date()
+				// Set HTML
+				msg.innerHTML = '<div class="line"><span class="time">[' + now.toLocaleString( 'de-DE', dateOptions ) + ']</span><span class="sender" type="' + ( nick.type !== undefined ? nick.type : 'normal' ) + '" colornumber="' + nick.color + '">&lt;' + nick.nick + '&gt;</span><span class="message" type="privmsg">' + text.value + '</span></div>'
+				msg = msg.firstChild
+				// Append msg
+				document.getElementById('channel').appendChild( msg )
+				// Scroll to new msg
+				msg.scrollIntoView({ behavior: 'smooth' })
+
+				// Console body
+				// Create msg
+				msg = document.createElement('div')
+				// Set HTML
+				msg.innerHTML = '<div class="line"><span class="time">[' + now.toLocaleString( 'de-DE', dateOptions ) + ']</span><span class="place">&lt;#superchan&gt;</span><span class="sender" type="' + ( nick.type !== undefined ? nick.type : 'normal' ) + '" colornumber="' + nick.color + '">&lt;' + nick.nick + '&gt;</span><span class="message" type="privmsg">' + text.value + '</span></div>'
+				msg = msg.firstChild
+				// Append msg
+				document.getElementById('console').appendChild( msg )
+				// Scroll to new msg
+				msg.scrollIntoView({ behavior: 'smooth' })
+
+				// Clear form
+				text.value = ''
+			}
+		})
+	})
+	</script>
+	
+</body>
+</html>

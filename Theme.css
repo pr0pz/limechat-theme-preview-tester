@@ -1,0 +1,405 @@
+@charset "UTF-8";
+/*	General */
+html {
+	font-family: Monaco, Trispace, monospace, sans-serif;
+	font-size: 12pt;
+	background-color: #282c34;
+	word-wrap: break-word;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	padding: 15px 0;
+	margin: 0;
+	background-color: #282c34;
+	color: #bfc8d8;
+}
+
+/*	General Typo */
+a {
+	color: #61afef;
+	transition: all 0.3s;
+}
+a:hover {
+	color: #c678dd;
+}
+
+.url {
+	word-break: break-all;
+}
+
+.address {
+	word-break: break-all;
+	text-decoration: none;
+}
+
+.highlight {
+	color: #e06c75;
+	font-weight: bold;
+}
+
+.time {
+	color: #778091;
+	flex-shrink: 0;
+}
+
+.place {
+	color: #61afef;
+}
+
+/*	Lines */
+.line {
+	padding: 2px 15px;
+	display: flex;
+	gap: 10px;
+}
+
+.line[type=topic],
+.line[highlight=true],
+.line[type=action] {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.line[highlight=true] {
+	background-color: rgba(224, 108, 117, 0.15);
+}
+
+.line[type=action] {
+	background-color: #393e4d;
+}
+
+.line[type=action] .sender:before {
+	content: "* ";
+	white-space: nowrap;
+}
+
+.line[type=action] .message:after {
+	content: " *";
+	white-space: nowrap;
+}
+
+[type=channel] .line[type=topic] {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	padding-top: 7.5px;
+	padding-bottom: 7.5px;
+	overflow: auto;
+	background-color: #393e4d;
+	border-bottom: 1px solid #5c6370;
+	box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
+}
+
+/*	Nick colors */
+.sender[type=myself] {
+	color: #fff;
+}
+
+.sender[type=normal] {
+	color: #bfc8d8;
+}
+
+.sender[type=normal][colornumber="1"] {
+	color: #e5c07b;
+}
+
+.sender[type=normal][colornumber="2"] {
+	color: #ffba3a;
+}
+
+.sender[type=normal][colornumber="3"] {
+	color: #7aff7a;
+}
+
+.sender[type=normal][colornumber="4"] {
+	color: #98c379;
+}
+
+.sender[type=normal][colornumber="5"] {
+	color: #c678dd;
+}
+
+.sender[type=normal][colornumber="6"] {
+	color: #16e889;
+}
+
+.sender[type=normal][colornumber="7"] {
+	color: #ff5d4f;
+}
+
+.sender[type=normal][colornumber="8"] {
+	color: #da65b5;
+}
+
+.sender[type=normal][colornumber="9"] {
+	color: #e5c07b;
+}
+
+.sender[type=normal][colornumber="10"] {
+	color: #e06c75;
+}
+
+.sender[type=normal][colornumber="11"] {
+	color: #0ff;
+}
+
+.sender[type=normal][colornumber="12"] {
+	color: #338cd6;
+}
+
+.sender[type=normal][colornumber="13"] {
+	color: #ff9898;
+}
+
+.sender[type=normal][colornumber="14"] {
+	color: #56b6c2;
+}
+
+.sender[type=normal][colornumber="15"] {
+	color: #d19a66;
+}
+
+/*	Message type colors */
+.message[type=system] {
+	color: #98c379;
+	font-style: italic;
+}
+
+.message[type=error] {
+	color: #ff5d4f;
+	font-style: italic;
+}
+
+.message[type=reply] {
+	color: #96a2b7;
+	font-style: italic;
+}
+
+.message[type=error_reply] {
+	color: #ff5d4f;
+	font-style: italic;
+}
+
+.message[type=dcc_send_send] {
+	color: #61afef;
+	font-style: italic;
+}
+
+.message[type=dcc_send_receive] {
+	color: #338cd6;
+	font-style: italic;
+}
+
+.message[type=privmsg] {
+	color: #bfc8d8;
+	font-style: italic;
+}
+
+.message[type=notice] {
+	color: #96a2b7;
+	font-style: italic;
+}
+
+.message[type=action] {
+	color: #96a2b7;
+	font-style: italic;
+}
+
+.message[type=join] {
+	color: #98c379;
+	font-style: italic;
+}
+
+.message[type=part] {
+	color: #ff5d4f;
+	font-style: italic;
+}
+
+.message[type=kick] {
+	color: #e06c75;
+	font-style: italic;
+}
+
+.message[type=quit] {
+	color: #ff5d4f;
+	font-style: italic;
+}
+
+.message[type=kill] {
+	color: #98c379;
+	font-style: italic;
+}
+
+.message[type=nick] {
+	color: #98c379;
+	font-style: italic;
+}
+
+.message[type=mode] {
+	color: #98c379;
+	font-style: italic;
+}
+
+.message[type=topic] {
+	color: #fff;
+	font-style: italic;
+}
+
+.message[type=invite] {
+	color: #98c379;
+	font-style: italic;
+}
+
+.message[type=wallops] {
+	color: #98c379;
+	font-style: italic;
+}
+
+.message[type=debug_send] {
+	color: #778091;
+	font-style: italic;
+}
+
+.message[type=debug_receive] {
+	color: #5c6370;
+	font-style: italic;
+}
+
+.message[type=privmsg] {
+	font-style: normal;
+}
+
+.message[type=error] {
+	font-weight: bold;
+}
+
+/*	mIRC color effects */
+.effect[color-number="0"] {
+	color: #bfc8d8;
+}
+
+.effect[bgcolor-number="0"] {
+	color: #bfc8d8;
+}
+
+.effect[color-number="1"] {
+	color: #282c34;
+}
+
+.effect[bgcolor-number="1"] {
+	color: #282c34;
+}
+
+.effect[color-number="2"] {
+	color: #338cd6;
+}
+
+.effect[bgcolor-number="2"] {
+	color: #338cd6;
+}
+
+.effect[color-number="3"] {
+	color: #98c379;
+}
+
+.effect[bgcolor-number="3"] {
+	color: #98c379;
+}
+
+.effect[color-number="4"] {
+	color: #e06c75;
+}
+
+.effect[bgcolor-number="4"] {
+	color: #e06c75;
+}
+
+.effect[color-number="5"] {
+	color: #ff5d4f;
+}
+
+.effect[bgcolor-number="5"] {
+	color: #ff5d4f;
+}
+
+.effect[color-number="6"] {
+	color: #c678dd;
+}
+
+.effect[bgcolor-number="6"] {
+	color: #c678dd;
+}
+
+.effect[color-number="7"] {
+	color: #ffba3a;
+}
+
+.effect[bgcolor-number="7"] {
+	color: #ffba3a;
+}
+
+.effect[color-number="8"] {
+	color: #e5c07b;
+}
+
+.effect[bgcolor-number="8"] {
+	color: #e5c07b;
+}
+
+.effect[color-number="9"] {
+	color: #7aff7a;
+}
+
+.effect[bgcolor-number="9"] {
+	color: #7aff7a;
+}
+
+.effect[color-number="10"] {
+	color: #56b6c2;
+}
+
+.effect[bgcolor-number="10"] {
+	color: #56b6c2;
+}
+
+.effect[color-number="11"] {
+	color: #0ff;
+}
+
+.effect[bgcolor-number="11"] {
+	color: #0ff;
+}
+
+.effect[color-number="12"] {
+	color: §light-blue;
+}
+
+.effect[bgcolor-number="12"] {
+	color: §light-blue;
+}
+
+.effect[color-number="13"] {
+	color: #da65b5;
+}
+
+.effect[bgcolor-number="13"] {
+	color: #da65b5;
+}
+
+.effect[color-number="14"] {
+	color: #778091;
+}
+
+.effect[bgcolor-number="14"] {
+	color: #778091;
+}
+
+.effect[color-number="15"] {
+	color: #96a2b7;
+}
+
+.effect[bgcolor-number="15"] {
+	color: #96a2b7;
+}

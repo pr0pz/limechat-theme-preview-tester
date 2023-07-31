@@ -1,0 +1,42 @@
+/*
+* Put Theme.yaml Styles here
+*/
+
+/* Input */
+.input {
+	font-family: Monaco;
+	font-size: 14px;
+	background-color: #2e323e;
+	color: #abb2bf
+}
+
+/* member-list */
+.member-list {
+	font-family: Monaco;
+	font-size: 14px;
+	background: #20252b;
+	color: #abb2bf;
+}
+
+	.member-list .operator { color:#7aff7a }
+	.member-list .selected { color: #fff }
+
+/* server-tree */
+.server-tree {
+	font-family: Monaco;
+	font-size: 14px;
+	background-color:#20252b;
+	color: #abb2bf;
+}
+
+	.server-tree .highlight { color: #e06c75 }
+	.server-tree .newtalk { color: #e5c07b }
+	.server-tree .unread { color: #e5c07b }
+	.server-tree .active { color: #bfc8d8 }
+	.server-tree .inactive { color: #778091 }
+	.server-tree .active .selected { color: #fff }
+	.server-tree .inactive .selected { color: #96a2b7 }
+	.server-tree .selected {}
+
+
+
