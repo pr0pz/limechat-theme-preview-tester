@@ -1,15 +1,23 @@
 @charset "UTF-8";
+/**
+ * Atom One Dark Theme for Limechat
+ * 
+ * @author Wellington Estevo <info@propz.de> (https://propz.de)
+ * @repository https://github.com/pr0pz/limechat-atom-one-dark
+ * @version 1.0.0
+ */
 /*	General */
 html {
-	font-family: Monaco, Trispace, monospace, sans-serif;
+	font-family: "Fira Mono", Monaco, monospace;
 	font-size: 12pt;
-	background-color: #282c34;
+	background-color: #20252b;
 	word-wrap: break-word;
 	margin: 0;
 	padding: 0;
 }
 
-body {
+[type=channel],
+[type=console] {
 	padding: 15px 0;
 	margin: 0;
 	background-color: #282c34;
@@ -57,17 +65,22 @@ a:hover {
 
 .line[type=topic],
 .line[highlight=true],
-.line[type=action] {
+.line[type=action],
+.line[type=invite] {
 	padding-top: 4px;
 	padding-bottom: 4px;
 }
 
 .line[highlight=true] {
-	background-color: rgba(224, 108, 117, 0.15);
+	background-color: rgba(224, 108, 117, 0.2);
 }
 
 .line[type=action] {
-	background-color: #393e4d;
+	background-color: #3d4352;
+}
+
+.line[type=invite] {
+	background-color: rgba(152, 195, 121, 0.2);
 }
 
 .line[type=action] .sender:before {
@@ -92,6 +105,9 @@ a:hover {
 	box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
 }
 
+/*.line[type=system],
+.line[type=mode],
+.line[type=reply]{display:none}*/
 /*	Nick colors */
 .sender[type=myself] {
 	color: #fff;
@@ -267,12 +283,18 @@ a:hover {
 	font-style: italic;
 }
 
-.message[type=privmsg] {
+.message[type=privmsg],
+.message[type=notice] {
 	font-style: normal;
 }
 
 .message[type=error] {
 	font-weight: bold;
+}
+
+.message[type=invite]:before,
+.message[type=invite]:after {
+	content: " *** ";
 }
 
 /*	mIRC color effects */

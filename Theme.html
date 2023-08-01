@@ -10,8 +10,8 @@
 	*/
 	*{box-sizing:border-box;padding:0;margin:0}
 	.body:not(.normal){padding:0}
-	.body.normal{background-color:inherit;position:relative}
-	.wrapper {width:100%;display:flex;height:100vh}
+	.body.normal{position:relative}
+	.wrapper {width:100%;display:flex;height:100vh;align-items:flex-start}
 	/* Main */
 	/* You can resize the channel and console height here */
 	main [type=channel]{max-height:70vh}
@@ -19,18 +19,19 @@
 	main{flex-grow:1;display:flex;flex-direction:column}
 	main .body{overflow-y:scroll;}
 	/* Input */
-	.input{display:block;width:100%;padding:15px}
+	.input{display:block;width:100%;padding:10px;border:1px solid #555}
 	/* lists for server tree and member-list */
 	ul{list-style:none;padding:0;margin:0}
 	ul ul{padding-left:15px}
 	li{padding-left:15px;margin-top:4px}
 	.closed ul{display:none}
 	/* server-tree */
-	.server-tree{width:10%}
+	.server-tree,
+	.member-list{width:15%;resize:horizontal;overflow:auto}
 	.server-tree>ul>li:before{content:"› ";display:inline-block}
 	.server-tree>ul>li.open:before{transform:rotate(90deg)}
 	/* member-list */
-	.member-list{padding:4px;width:10%;position:relative;z-index: 1}
+	.member-list{padding:4px;position:relative;z-index:1}
 	.member-list li:before {display:inline-block;content:"+";margin-left:-15px;opacity:0;margin-right:4px}
 	.member-list .voice:before{opacity:1}
 	.member-list .operator:before{content:"@";opacity:1}
@@ -43,11 +44,11 @@
 				<li class="active open">
 					freenode
 					<ul>
-						<li class="normal">#helpdesk</li>
-						<li class="normal selected active">#superchan</li>
+						<li>#helpdesk</li>
+						<li class="selected">#superchan</li>
 						<li>#limechat</li>
-						<li class="normal newtalk">#nerds</li>
-						<li class="normal highlight">#onfire</li>
+						<li class="newtalk">#nerds</li>
+						<li class="highlight">#onfire</li>
 					</ul>
 				</li>
 				<li class="inactive closed">
@@ -68,14 +69,37 @@
 					UnderNET
 					<ul>
 						<li>#network</li>
-						<li>#is</li>
 						<li>#inactive</li>
+						<li class="selected">#selected</li>
 					</ul>
 				</li>
 			</ul>
 		</aside>
 		<main class="main">
 			<div class="body normal" id="channel" type="channel" channelname='#limechat'>
+
+				<div class="line">&nbsp;</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:57]</span>
+					<span class="message" type="reply">Topic: This is a super topic!</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:57]</span>
+					<span class="message" type="reply">pr0pz set the topic at: 1. Jul 2023 at 12:34</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:57]</span>
+					<span class="message" type="reply">Mode: +CDPTmnrt</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:57]</span>
+					<span class="message" type="reply">Created at: 1. Jan 2000 at 13:37</span>
+				</div>
+				<div class="line" type="system">
+					<span class="time">[30.07.23, 17:41:57]</span>
+					<span class="message" type="system">You have joined the channel</span>
+				</div>
+
 				<div class="line">
 					<span class="time">[30.07.23, 17:41:57]</span>
 					<span class="sender" type="myself">&lt;pr0pz&gt;</span>
@@ -367,6 +391,119 @@
 			</div>
 
 			<div id="console" class="body normal" type="console">
+
+				<div class="line" type="system">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="system">Connecting&hellip;</span>
+				</div>
+				<div class="line" type="system">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="system">Connected</span>
+				</div>
+				<div class="line" type="system">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="system">Logged in</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">Welcome to the freenode IRC Network pr0pz!~pr0pz@host.com</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">Your host is *.freenode.net, running version InspIRCd-3</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">This server was created 09:22:41 Jun 22 2023</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">*.freenode.net InspIRCd-3 BDHILRSTWcdghikorswxz ABCDEFIJKLMNOPQRSTUWXYZbcdefhijklmnoprstuvwz BEFIJLWXYZbdefhjklovw</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">ACCEPT=30 AWAYLEN=200 BOT=B CALLERID=g CASEMAPPING=ascii CHANLIMIT=#:20 CHANMODES=IXZbew,k,BEFJLWdfjl,ACDKMNOPQRSTUcimnprstuz CHANNELLEN=64 CHANTYPES=# ELIST=CMNTU ESILENCE=CcdiNnPpTtx EXCEPTS=e are supported by this server</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">EXTBAN=,ACNOQRSTUacjmnpruwz HOSTLEN=64 INVEX=I KEYLEN=32 KICKLEN=255 LINELEN=512 MAXLIST=I:100,X:100,b:100,e:100,w:100 MAXTARGETS=20 MODES=20 MONITOR=30 NAMELEN=128 NAMESX NETWORK=freenode are supported by this server</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">NICKLEN=30 PREFIX=(Yohv)!@%+ REMOVE SAFELIST SECURELIST=60 SILENCE=32 STATUSMSG=!@%+ TOPICLEN=390 UHNAMES USERIP USERLEN=10 USERMODES=,,s,BDHILRSTWcdghikorwxz VBANLIST are supported by this server</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">VLIST=b WATCH=32 WHOX are supported by this server</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">There are 20 users and 7683 invisible on 9 servers</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">5 operator(s) online</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">11597 channels formed</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">I have 1758 clients and 1 servers</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">Current local users: 1758  Max: 2025</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">Current global users: 7703  Max: 8393</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">MOTD blocked by ZNC</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">pr0pz has changed mode: +Rirw</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">Reply(306): You have been marked as being away</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="sender">&lt;*status&gt;</span>
+					<span class="message" type="reply">Image here your own ZNC MOTD</span>
+				</div>
+				<div class="line" type="reply">
+					<span class="time">[30.07.23, 17:41:56]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="reply">Reply(305): You are no longer marked as being away</span>
+				</div>
+
 				<div class="line">
 					<span class="time">[30.07.23, 17:41:57]</span>
 					<span class="place">&lt;#superchan&gt;</span>
@@ -696,6 +833,12 @@
 					<span class="place">&lt;#superchan&gt;</span>
 					<span class="message" type="error">Error(421): SLAP Unkown command (error)</span>
 				</div>
+
+				<div class="line" type="invite">
+					<span class="time">[30.07.23, 17:44:17]</span>
+					<span class="place">&lt;freenode&gt;</span>
+					<span class="message" type="invite">boole has invited you to #omegachan</span>
+				</div>
 			</div>
 		</main>
 		<aside id="member-list" class="member-list">
@@ -711,7 +854,7 @@
 		{ nick: 'CosmicChampion', class: 'voice', color: 4, },
 		{ nick: 'CyberNinja', class: 'voice', color: 1 },
 		{ nick: 'DiscoUnicorn', class: 'voice', color: 7 },
-		{ nick: 'GalacticGuru', class: 'voice', color: 6, },
+		{ nick: 'GalacticGuru', class: ['voice', 'selected'], color: 6, },
 		{ nick: 'NeonGhost', class: 'voice', color: 5 },
 		{ nick: 'PixelPirate', class: 'voice', color: 2 },
 		{ nick: 'JazzMaster', color: 8 },
@@ -736,9 +879,17 @@
 		// Fill member list
 		nicks.forEach( nick =>
 		{
+			// Create element
 			let li = document.createElement('li')
-			li.classList.add( nick.class !== undefined ? nick.class : 'normal' )
 			li.innerHTML = nick.nick
+			// Add right classes
+			let classes = [ 'normal' ]
+			if ( nick.class !== undefined )
+			{
+				classes = Array.isArray( nick.class ) ? nick.class : [ nick.class ]
+			}
+			classes.forEach( c => li.classList.add( c ) )
+			// Append
 			document.getElementById('members').appendChild(li)
 		})
 
