@@ -34,7 +34,7 @@ I tried to name the classes self-descriptive, so you should know which .yaml par
 
 ### __Found any Bugs?__
 
-If you find any bugs/errors, feel free to [post an issue](https://github.com/pr0pz/scene-release-parser/issues).
+If you find any bugs/errors, feel free to [post an issue](issues).
 
 
 ### __License__
