@@ -34,7 +34,7 @@ I tried to name the classes self-descriptive, so you should know which .yaml par
 
 ### __Found any Bugs?__
 
-If you find any bugs/errors, feel free to [post an issue](issues).
+If you find any bugs/errors, feel free to [post an issue](https://github.com/pr0pz/limechat-theme-preview-tester/issues).
 
 
 ### __License__
